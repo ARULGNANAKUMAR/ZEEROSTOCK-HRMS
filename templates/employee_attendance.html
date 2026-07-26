@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>My Attendance - ZEEROSTOCK HRMS</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+<div class="app-shell">
+  {% include "_employee_sidebar.html" with context %}
+  <div class="content">
+    <h1>My Attendance</h1>
+    <p class="page-subtitle">Check in, check out, and view your history</p>
+
+    <div id="page-alert" class="alert alert-error hidden"></div>
+    <div id="page-success" class="alert alert-success hidden"></div>
+
+    <div class="card">
+      <h2>Today</h2>
+      <div id="today-summary" style="margin-bottom: 14px; color: var(--muted);">Loading...</div>
+      <button class="btn btn-success" id="checkin-btn" onclick="checkIn()">Check In</button>
+      <button class="btn btn-danger" id="checkout-btn" onclick="checkOut()">Check Out</button>
+    </div>
+
+    <div class="card">
+      <h2>Attendance History</h2>
+      <table>
+        <thead>
+          <tr><th>Date</th><th>Check In</th><th>Check Out</th><th>Status</th></tr>
+        </thead>
+        <tbody id="history-body">
+          <tr><td colspan="4" class="empty-state">Loading...</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<script src="{{ url_for('static', filename='js/api.js') }}"></script>
+<script src="{{ url_for('static', filename='js/employee-attendance.js') }}"></script>
+</body>
+</html>

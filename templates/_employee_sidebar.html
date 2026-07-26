@@ -1,0 +1,10 @@
+<div class="sidebar">
+  <div class="brand">ZEEROSTOCK HRMS<br><span class="role-badge">Employee Portal</span></div>
+  <nav>
+    <a href="/employee/dashboard" class="{{ 'active' if active == 'dashboard' else '' }}">Dashboard</a>
+    <a href="/employee/attendance" class="{{ 'active' if active == 'attendance' else '' }}">Attendance</a>
+    <a href="/employee/leaves" class="{{ 'active' if active == 'leaves' else '' }}">Leave Requests</a>
+    <a href="/employee/profile" class="{{ 'active' if active == 'profile' else '' }}">Profile</a>
+  </nav>
+  <button class="logout-btn" onclick="doLogout()">Log Out (<span id="current-user-email"></span>)</button>
+</div>

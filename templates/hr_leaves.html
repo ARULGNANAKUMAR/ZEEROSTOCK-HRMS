@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Leave Requests - ZEEROSTOCK HRMS</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+<div class="app-shell">
+  {% include "_hr_sidebar.html" with context %}
+  <div class="content">
+    <h1>Leave Requests</h1>
+    <p class="page-subtitle">Review, approve, or reject employee leave requests</p>
+
+    <div id="page-alert" class="alert alert-error hidden"></div>
+
+    <div class="card">
+      <div class="filters-bar">
+        <div class="form-group">
+          <label for="filter-status">Status</label>
+          <select id="filter-status" onchange="loadLeaves()">
+            <option value="">All</option>
+            <option value="Pending">Pending</option>
+            <option value="Approved">Approved</option>
+            <option value="Rejected">Rejected</option>
+          </select>
+        </div>
+      </div>
+
+      <table>
+        <thead>
+          <tr><th>Employee</th><th>Type</th><th>From</th><th>To</th><th>Reason</th><th>Status</th><th></th></tr>
+        </thead>
+        <tbody id="leaves-body">
+          <tr><td colspan="7" class="empty-state">Loading...</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<script src="{{ url_for('static', filename='js/api.js') }}"></script>
+<script src="{{ url_for('static', filename='js/hr-leaves.js') }}"></script>
+</body>
+</html>

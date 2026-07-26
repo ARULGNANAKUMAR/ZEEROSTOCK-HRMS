@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>HR Dashboard - ZEEROSTOCK HRMS</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+<div class="app-shell">
+  {% include "_hr_sidebar.html" with context %}
+  <div class="content">
+    <h1>Dashboard</h1>
+    <p class="page-subtitle">Overview of workforce activity</p>
+
+    <div id="dash-alert" class="alert alert-error hidden"></div>
+
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="label">Total Employees</div>
+        <div class="value" id="stat-total">--</div>
+      </div>
+      <div class="stat-card">
+        <div class="label">Present Today</div>
+        <div class="value" id="stat-present">--</div>
+      </div>
+      <div class="stat-card">
+        <div class="label">On Leave Today</div>
+        <div class="value" id="stat-leave">--</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Recent Attendance Activity</h2>
+      <table>
+        <thead>
+          <tr><th>Employee</th><th>Date</th><th>Check In</th><th>Check Out</th><th>Status</th></tr>
+        </thead>
+        <tbody id="recent-activity-body">
+          <tr><td colspan="5" class="empty-state">Loading...</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<script src="{{ url_for('static', filename='js/api.js') }}"></script>
+<script src="{{ url_for('static', filename='js/hr-dashboard.js') }}"></script>
+</body>
+</html>

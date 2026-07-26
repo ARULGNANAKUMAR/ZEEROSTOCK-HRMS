@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Attendance - ZEEROSTOCK HRMS</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+<div class="app-shell">
+  {% include "_hr_sidebar.html" with context %}
+  <div class="content">
+    <h1>Attendance Records</h1>
+    <p class="page-subtitle">View, filter by employee and date, and check timings</p>
+
+    <div id="page-alert" class="alert alert-error hidden"></div>
+
+    <div class="card">
+      <div class="filters-bar">
+        <div class="form-group">
+          <label for="filter-employee">Employee</label>
+          <select id="filter-employee"><option value="">All Employees</option></select>
+        </div>
+        <div class="form-group">
+          <label for="filter-date">Date</label>
+          <input type="date" id="filter-date">
+        </div>
+        <button class="btn btn-secondary btn-sm" onclick="loadAttendance()">Apply Filters</button>
+        <button class="btn btn-secondary btn-sm" onclick="clearFilters()">Clear</button>
+      </div>
+
+      <table>
+        <thead>
+          <tr><th>Employee</th><th>Date</th><th>Check In</th><th>Check Out</th><th>Status</th></tr>
+        </thead>
+        <tbody id="attendance-body">
+          <tr><td colspan="5" class="empty-state">Loading...</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<script src="{{ url_for('static', filename='js/api.js') }}"></script>
+<script src="{{ url_for('static', filename='js/hr-attendance.js') }}"></script>
+</body>
+</html>

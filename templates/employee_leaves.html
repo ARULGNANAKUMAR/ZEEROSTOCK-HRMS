@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>My Leave Requests - ZEEROSTOCK HRMS</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+<div class="app-shell">
+  {% include "_employee_sidebar.html" with context %}
+  <div class="content">
+    <div class="flex-between">
+      <div>
+        <h1>My Leave Requests</h1>
+        <p class="page-subtitle">Apply for leave and track your requests</p>
+      </div>
+      <button class="btn" onclick="openApplyModal()">+ Apply for Leave</button>
+    </div>
+
+    <div id="page-alert" class="alert alert-error hidden"></div>
+
+    <div class="card">
+      <table>
+        <thead>
+          <tr><th>Type</th><th>From</th><th>To</th><th>Reason</th><th>Status</th></tr>
+        </thead>
+        <tbody id="leaves-body">
+          <tr><td colspan="5" class="empty-state">Loading...</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay hidden" id="apply-modal">
+  <div class="modal-box">
+    <h2>Apply for Leave</h2>
+    <div id="modal-alert" class="alert alert-error hidden"></div>
+    <form id="apply-form">
+      <div class="form-group">
+        <label for="leave-type">Leave Type *</label>
+        <select id="leave-type" required>
+          <option value="Sick Leave">Sick Leave</option>
+          <option value="Casual Leave">Casual Leave</option>
+          <option value="Earned Leave">Earned Leave</option>
+          <option value="Unpaid Leave">Unpaid Leave</option>
+        </select>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="leave-start">Start Date *</label>
+          <input type="date" id="leave-start" required>
+        </div>
+        <div class="form-group">
+          <label for="leave-end">End Date *</label>
+          <input type="date" id="leave-end" required>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="leave-reason">Reason</label>
+        <textarea id="leave-reason" rows="3"></textarea>
+      </div>
+      <div class="modal-actions">
+        <button type="button" class="btn btn-secondary" onclick="closeApplyModal()">Cancel</button>
+        <button type="submit" class="btn" id="apply-btn">Submit</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script src="{{ url_for('static', filename='js/api.js') }}"></script>
+<script src="{{ url_for('static', filename='js/employee-leaves.js') }}"></script>
+</body>
+</html>
